@@ -1,0 +1,30 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "\"\"",
+  "main": "server.js",
+  "dependencies": {
+    "console.table": "^0.1.4",
+    "inquirer": "^8.2.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\",",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burkemm/matts-employee-tracker.git"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "Matt Burke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/burkemm/matts-employee-tracker/issues"
+  },
+  "homepage": "https://github.com/burkemm/matts-employee-tracker#readme"
+}
