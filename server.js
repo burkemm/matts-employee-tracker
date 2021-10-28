@@ -5,7 +5,8 @@ const cTable = require("console.table");
 
 const connection = mysql.createConnection({
     host: "localhost",
-    port: 3003,
+    // This only works on port 3306.
+    port: 3306,
     // This is the localhost username
     user:"root",
     // This is the password for mySQL.
@@ -35,7 +36,7 @@ function initiate(){
             break;
             case "Exit":
                 console.log("--------------------------------");
-                console.log("All done");
+                console.log("All finished!");
                 console.log("--------------------------------");
                 break;
             default:
@@ -68,17 +69,17 @@ function view(){
                 viewEmployees();
                 break;
             case "By department":
-                viewByDepartment();
+                viewDepartment();
                 break;
             case "By role":
-                viewByRole();
+                viewRole();
             default:
                 console.log("default");
         }
     });
 }
 
-function viewByRole(){
+function viewRole(){
     //this is a query for all roles
       connection.query("SELECT title FROM role", function(err, results){
       if(err) throw err;
@@ -112,7 +113,7 @@ function viewByRole(){
 
 }
 
-function viewByDepartment(){
+function viewDepartment(){
     //this queries a database for all departments.
     connection.query("SELECT * FROM department", function(err, results){
         if(err) throw err;
@@ -167,13 +168,13 @@ function add(){
         ]).then(function(res){
             switch(res.add) {
                 case "Department":
-                    addDepartment();
+                    addNewDepartment();
                     break;
                 case "Employee role":
-                    addEmployeeRole();
+                    addNewEmployeeRole();
                     break;
                 case "Employee":
-                    addEmployee();
+                    addNewEmployee();
                     break;
                 default:
                     console.log("default");
@@ -182,7 +183,7 @@ function add(){
     
 }
 // This function adds a new employee role.
-function addEmployeeRole(){
+function addNewEmployeeRole(){
     inquirer
     .prompt([
         {
@@ -231,7 +232,7 @@ function addEmployeeRole(){
     })
 }
 // This function adds a new department
-function addDepartment(){
+function addNewDepartment(){
     inquirer
     .prompt([ 
         {
@@ -254,7 +255,7 @@ function addDepartment(){
     })
 }
 // This function adds an employee. It first queries the role table.
-function addEmployee(){
+function addNewEmployee(){
     connection.query("Select * From role", function(err, results){
         if(err) throw err;
         // Once all choices are made populate the choice results.
